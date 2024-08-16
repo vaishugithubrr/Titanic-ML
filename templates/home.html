@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title style="color: #FFFFFF;">Titanic Survival Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #FFFFFF;
+            margin-top: 50px;
+            background-image: url('https://wallpapercave.com/wp/wp2074685.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            text-align: center;
+            font-weight: bold;
+            font-size: 38px;
+            margin-bottom: 40px;
+        }
+
+        form {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 3px solid #FFFFFF; /* Increased border thickness and changed border color */
+            background-color: transparent;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px #FFFFFF;
+        }
+
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #FFFFFF; /* Changed box color to white */
+            border-radius: 10px;
+        }
+
+        .result h2,
+        .result p {
+            color: #333333; /* Changed text color to black for better visibility on white background */
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <h1>Titanic Survival Prediction</h1>
+    <form action="/predict" method="POST">
+
+        <label for="pclass">Pclass:</label>
+        <input type="text" id="pclass" name="pclass" min="1" max="3" class="form-control" required>
+        
+        <label for="sex">Sex:</label>
+        <input type="text" id="sex" name="sex" min="0" max="1" class="form-control" required>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" class="form-control" step="0.01" required>
+
+        <label for="fare">Fare:</label>
+        <input type="text" id="fare" name="fare" class="form-control" step="0.01" required>
+
+        <label for="cabin">Cabin:</label>
+        <input type="text" id="cabin" name="cabin" class="form-control" step="0.01" required>
+
+        <label for="embarked">Embarked:</label>
+        <input type="text" id="embarked" name="embarked" min="0" max="2" class="form-control" required>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" min="0" max="3" class="form-control" required>
+
+        <label for="famsize">FamilySize:</label>
+        <input type="text" id="famsize" name="famsize" min="0" max="1" step="0.01" class="form-control" required>
+
+        <div>
+          <input type="submit" class="btn btn-primary" value="Predict">
+        </div>
+    </form>
+    {% if prediction_result %}
+        <div class="result">
+            <h2>Prediction Result:</h2>
+            <p>The prediction is: {{ prediction_result }}</p>
+        </div>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
